@@ -45,4 +45,31 @@ const confirmar = async (req, res) => {
   }
 };
 
-export { registrar, perfil, confirmar };
+const autenticar = async (req, res) => {
+  const { email, password } = req.body;
+
+  // Comprobar si el usuario existe
+  const usuario = await Veterinario.findOne({ email });
+  if (!usuario) {
+    const error = new Error("El usuario no existe");
+    return res.status(403).json({ msg: error.message });
+  }
+
+  // Comprobar si el usuario esta confirmado
+  if (!usuario.confirmado) {
+    const error = new Error("Tu cuenta no ha sido verificada");
+    return res.status(403).json({ msg: error.message });
+  }
+
+  // Revisar password
+  if (await usuario.comprobarPassword(password)) {
+    // Autenticar
+  } else {
+    const error = new Error("El password es incorrecto");
+    return res.status(403).json({ msg: error.message });
+  }
+
+  // Autenticar al usuario
+};
+
+export { registrar, perfil, confirmar, autenticar };
