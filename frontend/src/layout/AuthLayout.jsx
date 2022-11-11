@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 const AuthLayout = () => {
   return (
     <>
-      <h1>Desde AuthLayout</h1>
-
-      <Outlet />
+      <main className="container mx-auto md:grid mt-10">
+        <Outlet />
+      </main>
     </>
   );
 };
