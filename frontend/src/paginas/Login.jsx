@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <>
-      <div className="md:h-24 h-40">
-        <h1 className="text-indigo-500 font-black text-3xl text-center">
+      <div className="md:h-24 h-24">
+        <h1 className="text-indigo-500 font-black px-5 text-2xl md:text-3xl text-center">
           Inicia Sesion y Administra tus Pacientes
         </h1>
       </div>
-      <div className="md:w-3/5 px-5 md:px-0 grid mx-auto">
+      <div className="md:w-3/5 mx-5 grid md:mx-auto shadow-lg py-5 md:py-10 px-5 rounded-xl bg-white">
         <form action="">
           <div className="mb-5">
             <label className="text-gray-600 block text-xl font-bold" htmlFor="">
@@ -44,7 +44,7 @@ const Login = () => {
             No tienes una cuenta? Registrate
           </Link>
           <Link
-            className="block text-center my-5 text-gray-500"
+            className="block text-center mt-5 text-gray-500"
             to="/olvide-password"
           >
             Olvide mi password
