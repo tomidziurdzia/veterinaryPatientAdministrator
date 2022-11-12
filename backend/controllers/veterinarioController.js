@@ -43,7 +43,7 @@ const confirmar = async (req, res) => {
   }
 
   try {
-    usuarioConfirmar.token = "";
+    usuarioConfirmar.token = null;
     usuarioConfirmar.confirmado = true;
     await usuarioConfirmar.save();
     res.json({ msg: "Usuario confirmado correctamente" });
