@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/axios";
@@ -8,6 +8,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState({});
+
+  const navigate = useNavigate();
 
   const { msg } = alerta;
 
@@ -25,6 +27,7 @@ const Login = () => {
         password,
       });
       localStorage.setItem("token", data.token);
+      navigate("/admin");
     } catch (error) {
       setAlerta({ msg: error.response.data.msg, error: true });
     }
