@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import usePacientes from "../hooks/usePacientes";
 import Alerta from "./Alerta";
 
@@ -8,9 +8,21 @@ const Formulario = () => {
   const [email, setEmail] = useState("");
   const [fecha, setFecha] = useState("");
   const [sintomas, setSintomas] = useState("");
+  const [id, setId] = useState(null);
   const [alerta, setAlerta] = useState({});
 
-  const { guardarPaciente } = usePacientes();
+  const { guardarPaciente, paciente } = usePacientes();
+
+  useEffect(() => {
+    if (paciente?.nombre) {
+      setNombre(paciente.nombre);
+      setPropietario(paciente.propietario);
+      setEmail(paciente.email);
+      setFecha(paciente.fecha);
+      setSintomas(paciente.sintomas);
+      setId(paciente._id);
+    }
+  }, [paciente]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +37,7 @@ const Formulario = () => {
     }
 
     setAlerta({});
-    guardarPaciente({ nombre, propietario, email, fecha, sintomas });
+    guardarPaciente({ nombre, propietario, email, fecha, sintomas, id });
   };
 
   const { msg } = alerta;
@@ -110,7 +122,7 @@ const Formulario = () => {
         </div>
         <input
           type="submit"
-          value="Agregar Paciente"
+          value={id ? "Guardar Cambios" : "Agregar Paciente"}
           className="bg-indigo-500  w-full  py-3 px-10 text-xl rounded-xl text-white font-bold hover:cursor-pointer hover:bg-indigo-600 transition-colors"
         />
       </form>
