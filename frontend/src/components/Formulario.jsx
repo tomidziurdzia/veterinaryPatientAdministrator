@@ -32,9 +32,9 @@ const Formulario = () => {
 
   return (
     <>
-      <p className="text-lg text-center mb-10">
-        Anade tus pacientes y administralos
-      </p>
+      <h2 className="font-black text-3xl text-center text-gray-500">
+        Formulario Pacientes
+      </h2>
       {msg && <Alerta alerta={alerta} />}
       <form
         className="bg-white py-10 px-5 mx-5 lg:mx-0 mb-10 lg:mb-10 shadow-md rounded-md"
