@@ -15,7 +15,7 @@ const Header = () => {
             <Link className="text-white text-l font-bold" to="/admin">
               Pacientes
             </Link>
-            <Link className="text-white text-l font-bold" to="/perfil">
+            <Link className="text-white text-l font-bold" to="/admin/perfil">
               Perfil
             </Link>
             <button
